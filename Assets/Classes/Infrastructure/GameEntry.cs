@@ -1,5 +1,5 @@
-﻿using Assets.Classes.Common;
-using Assets.Classes.Model;
+﻿using Assets.Classes.Foundation.Classes;
+using Assets.Classes.Gameplay.Model;
 using UnityEngine;
 
 namespace Assets.Classes.Infrastructure

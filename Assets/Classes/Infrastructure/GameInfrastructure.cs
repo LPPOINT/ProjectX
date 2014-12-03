@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Classes.Foundation.Classes;
+using UnityEngine;
 
 namespace Assets.Classes.Infrastructure
 {
@@ -9,6 +10,38 @@ namespace Assets.Classes.Infrastructure
 
 
         public static GameObject Host { get; private set; }
+
+
+        public static T AddInfrastructureComponent<T>() where T : Component
+        {
+
+            if (DebugAssert.IsTrue(Host != null, "GameInfrastructure(): Host not initialized!"))
+            {
+                return default(T);
+            }
+
+            var c = Host.AddComponent<T>();
+            Object.DontDestroyOnLoad(c);
+            return c;
+        }
+        public static void RemoveInfrastructureComponent<T>() where T : Component
+        {
+            if (DebugAssert.IsTrue(Host != null, "GameInfrastructure(): Host not initialized!"))
+            {
+                return;
+            }
+
+            var c = Host.GetComponent<T>();
+            if (c != null)
+            {
+                Object.Destroy(c);
+            }
+
+        }
+        public static T GetInfrastructureComponent<T>() where T : Component
+        {
+            return DebugAssert.IsTrue(Host != null, "GameInfrastructure(): Host not initialized!") ? default (T) : Host.GetComponent<T>();
+        }
 
 
         private static bool wasInitialized;

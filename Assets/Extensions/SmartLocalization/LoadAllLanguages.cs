@@ -5,12 +5,13 @@
 // Copyright (c) 2013-2014 Niklas Borglund, Jakob Hillerström
 //
 
-namespace SmartLocalization
-{
-using UnityEngine;
 using System.Collections.Generic;
+using SmartLocalization;
+using UnityEngine;
 
-public class LoadAllLanguages : MonoBehaviour 
+namespace Assets.Extensions.SmartLocalization
+{
+    public class LoadAllLanguages : MonoBehaviour 
 {
 	private Dictionary<string,string> currentLanguageValues;
 	private List<SmartCultureInfo> availableLanguages;
